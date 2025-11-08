@@ -1,4 +1,4 @@
-import { min, random } from "lodash"
+import { random } from "lodash"
 import { History, Record } from "./types"
 
 const generateNumbers = (history: History): Record => {
@@ -15,19 +15,19 @@ const generateNumbers = (history: History): Record => {
 
     // if there have been 5 non-matches in a row, increase the odds of a match
     if (nonMatches >= 5) {
-        const modifier = min([(nonMatches - 4) * 10, 99])
+        const modifier = (nonMatches - 4)
 
         const subtractFromEnd = random(0, modifier)
         const addToStart = modifier - subtractFromEnd
 
-        const numA = random(1 + addToStart, 100 - subtractFromEnd)
-        const numB = random(1 + addToStart, 100 - subtractFromEnd)
+        const numA = random(1 + addToStart, 5 - subtractFromEnd)
+        const numB = random(1 + addToStart, 5 - subtractFromEnd)
 
         return [numA, numB]
     }
 
-    const numA = random(1, 100)
-    const numB = random(1, 100)
+    const numA = random(1, 5)
+    const numB = random(1, 5)
 
     return [numA, numB]
 }
