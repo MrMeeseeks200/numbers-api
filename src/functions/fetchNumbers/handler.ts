@@ -1,4 +1,4 @@
-import { formatJSONResponse } from '@libs/api-gateway';
+import { formatCORSResponse, formatJSONResponse } from '@libs/api-gateway';
 import { middyfy } from '@libs/lambda';
 import Redis from 'ioredis';
 import { FetchNumbersEvent, History, Record } from './types';
@@ -10,6 +10,9 @@ const redis = new Redis({
 });
 
 const fetchNumbers = async (event: FetchNumbersEvent) => {
+  if (event.httpMethod === 'OPTIONS') {
+    return formatCORSResponse();
+  }
   const { queryStringParameters: { "session-id": sessionId } } = event
 
   const history = await fetchHistory(sessionId)

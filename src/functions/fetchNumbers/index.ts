@@ -9,6 +9,12 @@ export default {
         path: 'fetch-numbers',
       },
     },
+    {
+      http: {
+        method: 'options',
+        path: 'fetch-numbers',
+      }
+    }
   ],
   environment: {
     REDIS_HOST: { 'Fn::GetAtt': ['RedisCluster', 'PrimaryEndPoint.Address'] },
