@@ -15,7 +15,32 @@ This project has Jest for unit testing
 
 - Run `npm run test`
 
-Architecture
+## Endpoint
+
+### DEV
+GET `https://kso9vgq60c.execute-api.us-east-1.amazonaws.com/dev/fetch-numbers?session-id=<some-session-id>`
+
+Response
+```json
+{
+    "result": [
+        2,
+        5
+    ],
+    "history": [
+        [
+            2,
+            4
+        ],
+        [
+            2,
+            5
+        ]
+    ]
+}
+```
+
+## Architecture
 
 
 ![architecture](./docs/architecture.png)
