@@ -20,7 +20,7 @@ const serverlessConfiguration: AWS = {
 
     vpc: {
       securityGroupIds: [{ 'Fn::GetAtt': ['LambdaSecurityGroup', 'GroupId'] }],
-      subnetIds: '${self:custom.subnetIds}'.split(','),
+      subnetIds: '${self:custom.subnetIds}' as any
     },
   },
   functions: { fetchNumbers },
@@ -37,7 +37,7 @@ const serverlessConfiguration: AWS = {
       concurrency: 10,
     },
     vpcId: '${ssm:/numbers-api/${opt:stage, "dev"}/vpc-id}',
-    subnetIds: '${ssm:/numbers-api/${opt:stage, "dev"}/subnet-ids}',
+    subnetIds: '${ssm:/numbers-api/${opt:stage, "dev"}/subnet-ids}'
   },
   resources: {
     Resources: {

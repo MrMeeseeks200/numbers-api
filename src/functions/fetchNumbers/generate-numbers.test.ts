@@ -10,7 +10,7 @@ describe('generateNumbers', () => {
         expect(numB).toBeGreaterThanOrEqual(1);
         expect(numB).toBeLessThanOrEqual(100);
     });
-    it('after 14 non-matches the next match should be guaranteed', () => {
+    it('should guarantee a match after 14 non-matches', () => {
         const history: History = [
             [10, 20],
             [15, 25],
